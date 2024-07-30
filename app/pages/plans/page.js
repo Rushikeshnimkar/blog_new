@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import Cookies from "js-cookie";
+import { NetSepioSDK, VpnClientResponse } from 'netsepio-sdk';
 const EREBRUS_GATEWAY_URL = process.env.NEXT_PUBLIC_EREBRUS_BASE_URL;
 
 const Plans = () => {
@@ -10,6 +10,8 @@ const Plans = () => {
   const [erebrusWallet, setErebrusWallet] = useState(null);
   const [displayText, setDisplayText] = useState('1.11 APT/3 months');
   const [displayText2, setDisplayText2] = useState('Pay by APT, crytocurrency or Fiat');
+
+  const sdk = new NetSepioSDK();
  
   const chainSymbol = Cookies.get('Chain_symbol');
   useEffect(() => {
@@ -43,18 +45,7 @@ const Plans = () => {
   const trialbuy = async () => {
     const auth = Cookies.get("erebrus_token");
     try {
-      const response = await fetch(
-        `${EREBRUS_GATEWAY_URL}api/v1.0/subscription/trial`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${auth}`,
-          },
-          // body: jsonData,
-        }
-      );
+      const response = await sdk.createClient("auth token");
 
       if (response.status === 200) {
         const responseData = await response.json();

@@ -24,8 +24,8 @@ dependencies:
     specifier: ^3.0.5
     version: 3.0.5
   netsepio-sdk:
-    specifier: ^1.0.5
-    version: 1.0.5(@babel/core@7.25.2)
+    specifier: ^1.0.6
+    version: 1.0.6(@babel/core@7.25.2)
   next:
     specifier: 14.2.4
     version: 14.2.4(@babel/core@7.25.2)(react-dom@18.3.1)(react@18.3.1)
@@ -681,6 +681,10 @@ packages:
       tslib: 2.6.3
     dev: false
 
+  /@types/crypto-js@4.2.2:
+    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
+    dev: false
+
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: false
@@ -1161,6 +1165,10 @@ packages:
       which: 2.0.2
     dev: true
 
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
+    dev: false
+
   /cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
@@ -1169,6 +1177,10 @@ packages:
 
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
+  /curve25519-js@0.0.4:
+    resolution: {integrity: sha512-axn2UMEnkhyDUPWOwVKBMVIzSQy2ejH2xRGy1wq81dqRwApXfIzfbE3hIX0ZRFBIihf/KDqK158DLwESu4AK1w==}
+    dev: false
 
   /damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -2550,13 +2562,16 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /netsepio-sdk@1.0.5(@babel/core@7.25.2):
-    resolution: {integrity: sha512-tkaSM0NZ0F/bJP7MogLPfgxmTKjCtztEW95QLPtiXNRtEteUUxIQ40FcnGcJc9lW5xFYBIBq7sTJh4conFzeqA==}
+  /netsepio-sdk@1.0.6(@babel/core@7.25.2):
+    resolution: {integrity: sha512-cIj2brXEUCe/pgGLj0hzHXlOztYHL3v8JdbD3iXDU6LdQpwJBHuimvRd8+vo+Yk15R9UYg+OQ9dGHEIUdj4F6Q==}
     dependencies:
       '@rollup/plugin-babel': 6.0.4(@babel/core@7.25.2)(rollup@4.19.1)
       '@rollup/plugin-typescript': 11.1.6(rollup@4.19.1)(tslib@2.6.3)(typescript@5.5.4)
+      '@types/crypto-js': 4.2.2
       '@types/react': 18.3.3
       axios: 1.7.2
+      crypto-js: 4.2.0
+      curve25519-js: 0.0.4
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       rollup: 4.19.1
