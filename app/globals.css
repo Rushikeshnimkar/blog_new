@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.rationale-regular {
+  font-family: "Rationale", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.clip-corner {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 10%);
+}
+
+.clip-corner-border {
+  position: relative;
+}
+
+.clip-corner-border::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: #3b82f6; /* Tailwind's blue-500 */
+  z-index: -1;
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 10%);
+}
+
+.clip-top-right-bottom-left {
+  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+}
+
+.clip-top-right-bottom-left-border {
+  position: relative;
+}
+
+.clip-top-right-bottom-left-border::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: #3b82f6; /* Tailwind's blue-500 */
+  z-index: -1;
+  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+}
+
+.shadow-right-bottom-yellow {
+  box-shadow: 5px 5px 0px 0px #FFD540; /* Adjust the values as needed */
+}
+
+.shadow-right-bottom-green {
+  box-shadow: 5px 5px 0px 0px #11D9C5; /* Adjust the values as needed */
+}
+.shadow-right-bottom-pink {
+  box-shadow: 5px 5px 0px 0px #FE68FC; /* Adjust the values as needed */
+}
+.shadow-right-bottom-blue {
+  box-shadow: 5px 5px 0px 0px #2B7CFF; /* Adjust the values as needed */
+}
+.bg-gradient-custom {
+  background: linear-gradient(
+    to bottom, 
+    rgba(255, 213, 64, 0.2),
+    rgba(43, 124, 255, 0.2),
+    rgba(17, 217, 197, 0.2),
+    rgba(254, 104, 252, 0.2)
+  );
+}
+
+
+.gradient-border {
+  border: 1px solid;
+  border-image-source: linear-gradient(124.13deg, #FFD540 1.16%, #2B7CFF 31.37%, #11D9C5 66.94%, #FE68FC 96.66%);
+  border-image-slice: 1;
+  border-radius: 0.5rem; /* Add this line */
+}
