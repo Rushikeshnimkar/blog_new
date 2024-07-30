@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "../utils/cn";
 import {handleLoginClick} from "./Login/googleLogin"
@@ -60,6 +61,13 @@ function Navbar({ className }: { className?: string }) {
           <div className="flex flex-col space-y-4 text-sm ">
             <button onClick={handleLoginClick}>Login with Google</button>
             
+          </div>
+        </MenuItem>
+
+        <MenuItem setActive={setActive} active={active} item="VPN">
+          <div className="flex flex-col space-y-4 text-sm ">
+            <Link href="/pages/subscription">Subscription</Link>
+            <Link href="/clients">Clients</Link>
           </div>
         </MenuItem>
       </Menu>

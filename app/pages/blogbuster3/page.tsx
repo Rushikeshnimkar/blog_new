@@ -15,7 +15,7 @@ const Blog3 = () => {
           </div>
         </div>
         <div className='flex-shrink-0 p-1 bg-orange-700 clip-top-right-bottom-left mr-10'>
-          <Image src={'/scream.jpeg'} alt='starry night' width={500} height={500} className='object-cover clip-top-right-bottom-left' />
+          <Image src={'/namaste.jpeg'} alt='starry night' width={500} height={500} className='object-cover clip-top-right-bottom-left' />
         </div>
       </div>
     </>

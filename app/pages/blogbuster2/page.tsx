@@ -8,7 +8,7 @@ const  Blog2= () => {
      <div className='h-auto w-full flex flex-col md:flex-row justify-between items-start'>
      <div className=' p-1 flex-1   ml-10'>
       <div className=' w-fit bg-blue-700 p-1 clip-top-right-bottom-left'>
-          <Image src={'/starryNight.jpeg'} alt='starry night' width={500} height={500} className='object-cover clip-top-right-bottom-left ' />
+          <Image src={'/scream.jpeg'} alt='starry night' width={500} height={500} className='object-cover clip-top-right-bottom-left ' />
           </div>
         </div>
         <div className=' mt-10 ml-10 flex-shrink-0'>

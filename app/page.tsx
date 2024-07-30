@@ -104,9 +104,6 @@ const Home = () => {
       <div>
         <Blog3 />
       </div>
-      <div className="h-screen">
-        <Contract/>
-      </div>
     </main>
   );
 };
