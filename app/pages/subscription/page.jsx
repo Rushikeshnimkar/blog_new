@@ -123,14 +123,14 @@ const Subscription = () => {
       setLoading(true);
       try {
 
-        const response = []
+        const response = await sdk.getClients("v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA");
 
         console.log("vpn decentralized", response);
 
         if (response.status === 200) {
           // Filter the data based on the domain ID
-          const wallet = Cookies.get("erebrus_userid");
-          const payload = response.data.payload;
+          const wallet = "6939ad68-ce60-42e7-9749-3a530282f8c5";
+          const payload = response.payload;
           const filteredData = payload.filter(
             (item) => item?.userId === wallet
           );
