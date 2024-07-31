@@ -45,7 +45,9 @@ const Plans = () => {
   const trialbuy = async () => {
     const auth = Cookies.get("erebrus_token");
     try {
-      const response = await sdk.createClient("auth token");
+      const response = await sdk.subscription(
+        "v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA"
+      );
 
       if (response.status === 200) {
         const responseData = await response.json();
