@@ -81,25 +81,25 @@ const Subscription = () => {
     console.log("clicked");
     try {
 
-      const response = await sdk.createVpnClient(name, formData.region, "auth token");
+      const response = await sdk.createVpnClient(formData.name, formData.region, "v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA");
 
       if (response.status === 200) {
-        const responseData = await response.json();
-        setVpnName(responseData.payload.client.Name);
+        
+        setVpnName(response.payload.client.Name);
         setFormData(initialFormData);
-        console.log("vpn data", responseData);
+        console.log("vpn data", response);
 
         const configFile = `
         [Interface]
-        Address = ${responseData.payload.client.Address}
-        PrivateKey = ${keys.privKey}
+        Address = ${response.payload.client.Address}
+        PrivateKey = ${response.configFile}
         DNS = 1.1.1.1
 
         [Peer]
-        PublicKey = ${responseData.payload.serverPublicKey}
-        PresharedKey = ${responseData.payload.client.PresharedKey} 
+        PublicKey = ${response.payload.serverPublicKey}
+        PresharedKey = ${response.payload.client.PresharedKey} 
         AllowedIPs = 0.0.0.0/0, ::/0
-        Endpoint = ${responseData.payload.endpoint}:51820
+        Endpoint = ${response.payload.endpoint}:51820
         PersistentKeepalive = 16`;
         setConfigFile(configFile);
         setverify(true);
@@ -122,7 +122,6 @@ const Subscription = () => {
     const fetchProjectsData = async () => {
       setLoading(true);
       try {
-        const auth = Cookies.get("erebrus_token");
 
         const response = []
 
@@ -155,7 +154,7 @@ const Subscription = () => {
     }
   }, [collectionsPage, collectionId, region, valueFromChild2]);
 
-  const loggedin = "uth token";
+  const loggedin = "auth token";
   const wallet = Cookies.get("erebrus_wallet");
 
   const handleChildValue = (value) => {
@@ -190,12 +189,11 @@ const Subscription = () => {
   useEffect(() => {
     const fetchNodesData = async () => {
       try {
-        const auth = Cookies.get("erebrus_token");
 
-        const response = []
+        const response = await sdk.getAllVPNs();
 
         if (response.status === 200) {
-          const payload = response.data.payload;
+          const payload = response.payload;
           setNodesData(payload);
           const filteredNodes = payload.filter(
             (node) =>
@@ -571,7 +569,7 @@ const Subscription = () => {
                                           </select>
                                         </div>
 
-                                        <div className="mb-4 w-full relative">
+                                        <div className="mb-4 w-full relative text-black">
                                           <div
                                             className="p-4 bg-white border border-gray-300 rounded-full cursor-pointer"
                                             onClick={handleDropdownToggle}
