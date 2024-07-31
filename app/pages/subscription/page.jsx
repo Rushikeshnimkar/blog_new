@@ -230,24 +230,15 @@ const Subscription = () => {
   useEffect(() => {
     const trialbuycheck = async () => {
       setLoading(true);
-      const auth = Cookies.get("erebrus_token");
+
       try {
-        const response = await fetch(
-          `${EREBRUS_GATEWAY_URL}api/v1.0/subscription`,
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json, text/plain, */*",
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${auth}`,
-            },
-          }
+        const response = await sdk.getSubscription(
+          "v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA"
         );
 
-        const responseData = await response.json();
-        if (responseData?.subscription) {
-          settrialsubscriptiondata(responseData);
-          console.log("trial subsc response", responseData);
+        if (response?.subscription) {
+          settrialsubscriptiondata(response);
+          console.log("trial subsc response", response);
         }
       } catch (error) {
         console.error("Error:", error);
