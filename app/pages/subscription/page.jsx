@@ -4,10 +4,9 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import MyVpnContainer from "../../components/Myvpncontainer";
 import NftdataContainer from "../../components/NftDataContainer";
-const EREBRUS_GATEWAY_URL = process.env.NEXT_PUBLIC_EREBRUS_BASE_URL;
 import QRCode from "qrcode.react";
 import { saveAs } from "file-saver";
-import { NetSepioSDK, VpnClientResponse } from 'netsepio-sdk';
+import { NetSepioSDK } from 'netsepio-sdk';
 
 const Subscription = () => {
   const [loading, setLoading] = useState(false);
@@ -77,11 +76,11 @@ const Subscription = () => {
 
     setLoading(true);
 
-    const auth = Cookies.get("erebrus_token");
+    const auth = Cookies.get("authToken");
     console.log("clicked");
     try {
 
-      const response = await sdk.createVpnClient(formData.name, formData.region, "v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA");
+      const response = await sdk.createVpnClient(formData.name, formData.region, auth);
 
       if (response.status === 200) {
         
@@ -120,10 +119,13 @@ const Subscription = () => {
 
   useEffect(() => {
     const fetchProjectsData = async () => {
+
+      const auth = Cookies.get("authToken");
+
       setLoading(true);
       try {
 
-        const response = await sdk.getClients("v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA");
+        const response = await sdk.getClients(auth);
 
         console.log("vpn decentralized", response);
 
@@ -229,10 +231,10 @@ const Subscription = () => {
     const trialbuycheck = async () => {
       setLoading(true);
 
+      const auth = Cookies.get("authToken");
+
       try {
-        const response = await sdk.getSubscription(
-          "v4.public.eyJ3YWxsZXRBZGRyZXNzIjoiMHhiODBlOTc1MTM3OTFlMzBlY2Y5NTRkNGM2MjAzOTFjYTVlMWY5ZmQzMzQyOGU3MmU2ZTFlMGQwNzU2MDI0ZjE4IiwidXNlcklkIjoiNjkzOWFkNjgtY2U2MC00MmU3LTk3NDktM2E1MzAyODJmOGM1Iiwic2lnbmVkQnkiOiJOZXRTZXBpbyIsImV4cCI6IjIwMjctMDQtMjdUMDY6NTY6MTIuODgwNjg2NDcyWiJ9v2rradhFeKwBL3VRVbFa69egs8D4vEr1fIGySqnGr6xuO7rx8tZWv5WCFtg1ATIrTA2RP1YJyYFw87R9lQ1HBA"
-        );
+        const response = await sdk.getSubscription(auth);
 
         if (response?.subscription) {
           settrialsubscriptiondata(response);

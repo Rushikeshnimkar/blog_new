@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "../utils/cn";
-import {handleLoginClick} from "./Login/googleLogin"
+import {handleLoginClick} from "./Login/googleLogin";
+import Cookies from "js-cookie";
+import { NetSepioSDK } from 'netsepio-sdk';
 
 export function NavbarDemo() {
   return (
@@ -16,6 +18,22 @@ export function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+
+  const sdk = new NetSepioSDK();
+
+  const getPaseto = async () => {
+    try {
+        const auth = await sdk.getToken("0xb80e97513791e30ecf954d4c620391ca5e1f9fd33428e72e6e1e0d0756024f18");
+        Cookies.set('authToken', (auth as any).token, { expires: 7 }); // Expires in 7 days, adjust as needed
+        console.log('Token saved in cookies');
+        return (auth as any).token;
+    } catch (error) {
+        console.error('Error fetching token:', error);
+        return null;
+    }
+};
+
+
   return (
     <div
       className={cn("fixed top-10 inset-x-0 max-w-sm mx-auto z-50", className)}
@@ -57,12 +75,12 @@ function Navbar({ className }: { className?: string }) {
             />
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="LogIn">
+        {/* <MenuItem setActive={setActive} active={active} item="LogIn">
           <div className="flex flex-col space-y-4 text-sm ">
             <button onClick={handleLoginClick}>Login with Google</button>
             
           </div>
-        </MenuItem>
+        </MenuItem> */}
 
         <MenuItem setActive={setActive} active={active} item="VPN">
           <div className="flex flex-col space-y-4 text-sm ">
@@ -70,6 +88,14 @@ function Navbar({ className }: { className?: string }) {
             <Link href="/clients">Clients</Link>
           </div>
         </MenuItem>
+
+        <MenuItem setActive={setActive} active={active} item="Login">
+          <div className="flex flex-col space-y-4 text-sm ">
+            <button onClick={getPaseto}>Get Paseto</button>
+            
+          </div>
+        </MenuItem>
+
       </Menu>
     </div>
   );
