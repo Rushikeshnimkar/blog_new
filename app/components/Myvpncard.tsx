@@ -250,8 +250,8 @@ const MyVpnCard: React.FC<ReviewCardProps> = ({
           <div className='relative rounded-lg shadow'>
             <div className='flex justify-center gap-4'>
               <img
-                className='w-12 animate-spin duration-[3000] h-12'
-                src='/Loadingerebrus.png'
+                className='w-32 animate-spin duration-[3000] h-12'
+                src='https://media0.giphy.com/media/2WjpfxAI5MvC9Nl8U7/giphy.gif?cid=6c09b952yjcdy937xonpl4ko7lu4jlboivab0vjnx3cu2av0&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g'
                 alt='Loading icon'
               />
   
