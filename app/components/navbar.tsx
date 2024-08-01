@@ -19,14 +19,23 @@ export function NavbarDemo() {
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [walletAddress, setWalletAddress] = useState<string>('');
+  const [tokentrue, setTokentrue] = useState<boolean>(false);
 
   const sdk = new NetSepioSDK();
+
+  const auth = Cookies.get("authToken");
 
   const getPaseto = async (wallet: string) => {
     try {
         const auth = await sdk.getToken(wallet);
         Cookies.set('authToken', (auth as any).token, { expires: 7 }); // Expires in 7 days, adjust as needed
         console.log('Token saved in cookies');
+        setTokentrue(true);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+        
         return (auth as any).token;
     } catch (error) {
         console.error('Error fetching token:', error);
@@ -45,6 +54,7 @@ const handleGetPaseto = async () => {
 
 
   return (
+    <>
     <div
       className={cn("fixed top-10 inset-x-0 max-w-sm mx-auto z-50", className)}
     >
@@ -99,14 +109,27 @@ const handleGetPaseto = async () => {
           </div>
         </MenuItem>
 
-        <MenuItem setActive={setActive} active={active} item="Login">
+        {!auth && (<MenuItem setActive={setActive} active={active} item="Login">
           <div className="flex flex-col space-y-4 text-sm ">
             <button onClick={handleGetPaseto}>Get Paseto</button>
             
           </div>
-        </MenuItem>
+        </MenuItem>)}
 
       </Menu>
     </div>
+
+{tokentrue && (
+  <div className="fixed z-50 top-0 w-full">
+    <div className="bg-blue-100 text-blue-700 px-4 py-3" role="alert">
+      <p className="font-bold">Successfully Generated Paseto Token!</p>
+      <p className="text-sm">
+        You can now use our sdk services
+      </p>
+    </div>
+  </div>
+)}
+
+</>
   );
 }
