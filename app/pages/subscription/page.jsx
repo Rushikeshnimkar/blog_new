@@ -88,18 +88,7 @@ const Subscription = () => {
         setFormData(initialFormData);
         console.log("vpn data", response);
 
-        const configFile = `
-        [Interface]
-        Address = ${response.payload.client.Address}
-        PrivateKey = ${response.configFile}
-        DNS = 1.1.1.1
-
-        [Peer]
-        PublicKey = ${response.payload.serverPublicKey}
-        PresharedKey = ${response.payload.client.PresharedKey} 
-        AllowedIPs = 0.0.0.0/0, ::/0
-        Endpoint = ${response.payload.endpoint}:51820
-        PersistentKeepalive = 16`;
+        const configFile = `${response.configFile}`;
         setConfigFile(configFile);
         setverify(true);
         setValueFromChild2("refreshafterclientcreate");
