@@ -351,7 +351,7 @@ const Subscription = () => {
                       <div className="relative rounded-lg shadow">
                         <div className="flex justify-center gap-4">
                           <img
-                            className="w-40 duration-[3000] h-32"
+                            className="w-40 h-32"
                             src='/loader.gif'
                             alt="Loading icon"
                           />
@@ -744,7 +744,7 @@ const Subscription = () => {
                         <div className="relative rounded-lg shadow">
                           <div className="flex justify-center gap-4">
                             <img
-                              className="w-40 animate-spin duration-[3000] h-32"
+                              className="w-40 h-32"
                               src='/loader.gif'
                               alt="Loading icon"
                             />
@@ -939,7 +939,7 @@ const Subscription = () => {
                               <div className="relative rounded-lg shadow">
                                 <div className="flex justify-center gap-4">
                                   <img
-                                    className="w-40 animate-spin duration-[3000] h-32"
+                                    className="w-40 h-32"
                                     src='/loader.gif'
                                     alt="Loading icon"
                                   />
