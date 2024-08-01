@@ -18,12 +18,13 @@ export function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const [walletAddress, setWalletAddress] = useState<string>('');
 
   const sdk = new NetSepioSDK();
 
-  const getPaseto = async () => {
+  const getPaseto = async (wallet: string) => {
     try {
-        const auth = await sdk.getToken("0xb80e97513791e30ecf954d4c620391ca5e1f9fd33428e72e6e1e0d0756024f18");
+        const auth = await sdk.getToken(wallet);
         Cookies.set('authToken', (auth as any).token, { expires: 7 }); // Expires in 7 days, adjust as needed
         console.log('Token saved in cookies');
         return (auth as any).token;
@@ -31,6 +32,15 @@ function Navbar({ className }: { className?: string }) {
         console.error('Error fetching token:', error);
         return null;
     }
+};
+
+
+const handleGetPaseto = async () => {
+  const wallet = prompt("Please enter your wallet address:");
+  if (wallet) {
+    setWalletAddress(wallet);
+    await getPaseto(wallet);
+  }
 };
 
 
@@ -91,7 +101,7 @@ function Navbar({ className }: { className?: string }) {
 
         <MenuItem setActive={setActive} active={active} item="Login">
           <div className="flex flex-col space-y-4 text-sm ">
-            <button onClick={getPaseto}>Get Paseto</button>
+            <button onClick={handleGetPaseto}>Get Paseto</button>
             
           </div>
         </MenuItem>
