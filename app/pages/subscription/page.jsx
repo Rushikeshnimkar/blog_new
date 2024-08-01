@@ -351,8 +351,8 @@ const Subscription = () => {
                       <div className="relative rounded-lg shadow">
                         <div className="flex justify-center gap-4">
                           <img
-                            className="w-32 duration-[3000] h-32"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsA2mJWf32QUQpGerQLa_s2aSXTIxavJV-G9ad76dNydTcAe7J3qZLz_MeJQWFHMy39M&usqp=CAU"
+                            className="w-40 duration-[3000] h-32"
+                            src='/loader.gif'
                             alt="Loading icon"
                           />
                         </div>
@@ -744,8 +744,8 @@ const Subscription = () => {
                         <div className="relative rounded-lg shadow">
                           <div className="flex justify-center gap-4">
                             <img
-                              className="w-32 animate-spin duration-[3000] h-32"
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsA2mJWf32QUQpGerQLa_s2aSXTIxavJV-G9ad76dNydTcAe7J3qZLz_MeJQWFHMy39M&usqp=CAU"
+                              className="w-40 animate-spin duration-[3000] h-32"
+                              src='/loader.gif'
                               alt="Loading icon"
                             />
                           </div>
@@ -939,8 +939,8 @@ const Subscription = () => {
                               <div className="relative rounded-lg shadow">
                                 <div className="flex justify-center gap-4">
                                   <img
-                                    className="w-32 animate-spin duration-[3000] h-32"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsA2mJWf32QUQpGerQLa_s2aSXTIxavJV-G9ad76dNydTcAe7J3qZLz_MeJQWFHMy39M&usqp=CAU"
+                                    className="w-40 animate-spin duration-[3000] h-32"
+                                    src='/loader.gif'
                                     alt="Loading icon"
                                   />
                                 </div>
