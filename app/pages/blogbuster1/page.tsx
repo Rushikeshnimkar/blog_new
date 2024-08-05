@@ -6,7 +6,7 @@ const Blog1 = () => {
     <>
       <div className='h-auto w-full flex flex-col md:flex-row justify-between items-start '>
         <div className='flex-1 mt-10 ml-10'>
-          <div className='text-6xl  mb-10 font-rationale'>Welcome to Blog Buster</div>
+          <div className='text-6xl  mb-10 font-rationale'>Welcome to Netsepio</div>
           <div className=' mb-10 text-3xl'>Create. Share. Inspire.</div>
           <div className='  text-xl'>
             Welcome to Blog Buster, your digital haven for storytelling, creativity, and connection.<br/>

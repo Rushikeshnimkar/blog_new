@@ -4,6 +4,7 @@ import ReviewContainer from '../../components/ReviewContainer';
 import { fetchMetadataFromIPFS } from '../../modules/fetch_metadata_from_ipfs';
 import Loader from '../../components/Loaderallreviews';
 import { NetSepioSDK } from 'netsepio-sdk';
+import { NavbarDemo } from '@/app/components/navbar';
 
 const Page = () => {
 
@@ -100,6 +101,7 @@ const Page = () => {
 
   return (
     <div>
+      <NavbarDemo/>
       <div className="px-4 mx-auto max-w-7xl">
   {loading ? (
       <Loader />

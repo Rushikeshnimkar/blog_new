@@ -375,8 +375,8 @@ const Subscription = () => {
                             <div className="w-full">
                               <h3 className="leading-12 mb-2 text-white">
                                 <div className="text-lg font-semibold mt-4 uppercase">
-                                  {/* {trialsubscriptiondata.subscription.type}{" "} */}
-                                  Subscription
+                                  {trialsubscriptiondata.subscription.type}{" "}
+                                
                                 </div>
                                 <div className="lg:flex md:flex justify-between">
                                   <div className="text-md font-semibold mt-4">
@@ -406,13 +406,13 @@ const Subscription = () => {
                                     <span className="text-red-500 ">
                                       End time :
                                     </span>{" "}
-                                    {/* {trialsubscriptiondata.subscription.endTime
+                                    {trialsubscriptiondata.subscription.endTime
                                       ? formatDateTime(
                                           trialsubscriptiondata.subscription
                                             .endTime
                                         )
-                                      : "Loading..."} */}
-                                      23 August 2024 23:43:34
+                                      : "Loading..."}
+                                    
 
                                   </div>
                                 </div>
