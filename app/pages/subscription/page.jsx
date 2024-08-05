@@ -7,6 +7,7 @@ import NftdataContainer from "../../components/NftDataContainer";
 import QRCode from "qrcode.react";
 import { saveAs } from "file-saver";
 import { NetSepioSDK } from 'netsepio-sdk';
+import { NavbarDemo } from "@/app/components/navbar";
 
 const Subscription = () => {
   const [loading, setLoading] = useState(false);
@@ -308,6 +309,8 @@ const Subscription = () => {
   }
 
   return (
+    <>
+    <NavbarDemo/>
     <div className="py-0 min-h-screen">
       <section className="">
         <div className="px-10 mx-auto">
@@ -947,6 +950,7 @@ const Subscription = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
