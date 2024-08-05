@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <main className="h-full bg-gradient-custom">
       <div className="h-[20vh]">
-        <p className="text-white text-3xl pt-7 ml-10 font-bold">Blog Buster</p>
+        <p className="text-white text-3xl pt-7 ml-10 font-bold">Netsepio Demo</p>
         <NavbarDemo />
       </div>
       <div className="flex">
